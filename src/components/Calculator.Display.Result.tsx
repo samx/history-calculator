@@ -1,5 +1,6 @@
 import styled from "styled-components";
-
+import { useSelector } from 'react-redux';
+import { selectCalcResultString } from "../store/calc/calculations.selector";
 const Content = styled.div `
 /* Numbers */
 
@@ -27,8 +28,11 @@ flex-grow: 0;
 `
 
 const CalculatorDisplayResult = ({}) => {
+  
+  const calcResult = useSelector(selectCalcResultString);
+
     return (
-        <Content> 1,258.2</Content>  
+        <Content> {calcResult}</Content>  
     );
   };
   

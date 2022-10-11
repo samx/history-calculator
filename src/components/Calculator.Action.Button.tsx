@@ -1,6 +1,10 @@
 import styled from "styled-components";
+import { ACTION } from "../Constants";
+import { inputNumberToCalcResult } from "../store/calc/calculations.action";
+import { selectCalcResultString } from "../store/calc/calculations.selector";
+import { useSelector,useDispatch } from 'react-redux';
 
-const Content = styled.div<{buttonColor:string}> `
+const Button = styled.button<{buttonColor:string}> `
 /* Button */
 
 width: 170px;
@@ -29,14 +33,12 @@ outline: 2px solid transparent;
 
 `
 
-
-
 type Props = {
     buttonData:{
         display:string,
-        title:string,
         buttonColor:'dark-button-low'| 'dark-button-medium'| 'dark-button-high', //1 step 
-        actionName:string    
+        actionName:string,
+        actionValue:string    
     }   
 }
 
@@ -52,16 +54,26 @@ const ButtonColorKeys:ButtonColor = { //step 3
     "dark-button-medium":"#4E505F"
 }
 
-const CalculatorActionButton = ({buttonData}:Props) => {
 
-    let bcolor:string = "#2E2F38" //step 4
-    if(ButtonColorKeys[buttonData.buttonColor] !== null && buttonData.buttonColor !== null){ //step 5
-        bcolor = ButtonColorKeys[buttonData.buttonColor] //step 6
+
+const CalculatorActionButton = ({buttonData}:Props) => {
+    const currentCalcResultString = useSelector(selectCalcResultString);
+    const dispatch = useDispatch();
+    function addInputToCalc(actionName:string, actionValue:string):void{
+        if(actionName === ACTION.TYPE.NUMBER){
+            console.log(ACTION.TYPE.NUMBER)
+            dispatch(inputNumberToCalcResult(currentCalcResultString,actionValue))
+        }else if(actionName === ACTION.TYPE.SYMBOL){
+    
+        }
     }
 
+    let bcolor:string = (ButtonColorKeys[buttonData.buttonColor] !== null && buttonData.buttonColor !== null) 
+                        ? ButtonColorKeys[buttonData.buttonColor] : "#2E2F38"
 
     return (
-        <Content buttonColor={bcolor} >{buttonData.display}</Content>  
+        <Button onClick={()=>addInputToCalc( buttonData.actionName, buttonData.actionValue)} 
+        buttonColor={bcolor}>{buttonData.display}</Button>  
     );
   };
   

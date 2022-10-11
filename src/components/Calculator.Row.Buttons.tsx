@@ -26,17 +26,18 @@ interface Props {
 }
 
 interface NumButton {
-    title:string,
+
     display:string,
     buttonColor:'dark-button-low'| 'dark-button-medium'| 'dark-button-high',
-    actionName:string 
+    actionName:string,
+    actionValue:string, 
 }
 
 const CalculatorRowButtons = ({ buttons }: Props) => {
     return (
         <Content>
         {buttons.map((button) => (
-            <CalculatorActionButton key={button.actionName}
+            <CalculatorActionButton key={button.actionValue}
             buttonData={button} 
  />
         ))}

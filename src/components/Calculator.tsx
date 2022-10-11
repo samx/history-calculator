@@ -38,7 +38,7 @@ const Calculator = ({}) => {
                 {display:'6',buttonColor:'dark-button-low',actionName:ACTION.TYPE.NUMBER, actionValue:ACTION.VALUE.NUMBER_6},
                 {display:'×',buttonColor:'dark-button-high',actionName:ACTION.TYPE.SYMBOL, actionValue:ACTION.VALUE.SYMOBL_MULTIPLE}]}/>
             <CalculatorRowButtons buttons={[
-                {display:'1',buttonColor:'dark-button-low',actionName:ACTION.TYPE.NUMBER, actionValue:ACTION.VALUE.NUMBER_1,
+                {display:'1',buttonColor:'dark-button-low',actionName:ACTION.TYPE.NUMBER, actionValue:ACTION.VALUE.NUMBER_1},
                 {display:'2',buttonColor:'dark-button-low',actionName:ACTION.TYPE.NUMBER, actionValue:ACTION.VALUE.NUMBER_2},
                 {display:'3',buttonColor:'dark-button-low',actionName:ACTION.TYPE.NUMBER, actionValue:ACTION.VALUE.NUMBER_3},
                 {display:'-',buttonColor:'dark-button-high',actionName:ACTION.TYPE.SYMBOL, actionValue:ACTION.VALUE.SYMBOL_MINUS}]}/>

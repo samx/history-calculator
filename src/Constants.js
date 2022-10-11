@@ -19,7 +19,12 @@ export const ACTION = {
         SYMBOL_PLUS:'+',
         SYMBOL_MINUS:'-',
         SYMBOL_DIVIDE:'/',
-        SYMOBL_MULTIPLE:'*'
+        SYMBOL_MULTIPLE:'*',
+        SYMBOL_CLEAR_RESULT:'C',
+        SYMBOL_CLEAR_ALL:'CE',
+        SYMBOL_BLANK:'',
+        SYMBOL_BACKSPACE:'',
+
     }
 }
 

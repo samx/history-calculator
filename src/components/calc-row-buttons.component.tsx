@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import CalculatorActionButton from './Calculator.Action.Button';
+import CalculatorActionButton from './calc-action-button.component';
 
 const Content = styled.div `
 /* Row */

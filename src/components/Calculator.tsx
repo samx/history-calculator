@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import CalculatorDisplayFormula from './Calculator.Display.Formula';
-import CalculatorDisplayResult from './Calculator.Display.Result';
-import CalculatorRowButtons from './Calculator.Row.Buttons';
+import CalculatorDisplayFormula from './calc-display-formula.component';
+import CalculatorDisplayResult from './calc-display-result.component';
+import CalculatorRowButtons from './calc-row-buttons.component';
 import { ACTION } from '../Constants';
 
 const Content = styled.div `

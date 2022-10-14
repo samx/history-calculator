@@ -71,18 +71,43 @@ const CalculatorActionButton = ({buttonData}:Props) => {
     const calcResetDisplayFormulaOnNextNumberClick = useSelector(selectCalcResetDisplayFormulaOnNextNumberClick);
 
     const removeLeadingZero = (calcResultString:string):string=>{
-        if(calcResultString.substring(0,1) === "0")
+        if(calcResultString.substring(0,1) === "0") 
             return "";
-        else
-            return calcResultString;
+        
+        return calcResultString;
     }
 
     const removePreviousResult = (calcResetDisplayResultOnNextNumberClick:boolean,calcResultString:string):string => {
         if(calcResetDisplayResultOnNextNumberClick)
             return "";
-        else
-            return calcResultString;               
+
+        return calcResultString;               
     }
+
+    const hasDecimalAlreadyChecker = (calcResultString:string,actionValue:string):boolean =>{
+        //if the calcResultString already has a decimal. Don't allow another decimal to be added
+        if(calcResultString.indexOf(ACTION.VALUE.NUMBER_DOT) > -1 && actionValue === ACTION.VALUE.NUMBER_DOT )
+            return true;
+
+       return false;
+    }
+
+    // const reformatResultWithDecimal = (caseCheck:string,calcResultString:string , actionValue:string,actionName:string):string =>{        
+    //     switch (caseCheck) {
+    //         case "add-leading-zero": //if calcResultString is empty and the input value is a "." -> Add a "0";
+    //             if(calcResultString.length === 1 && actionValue === ACTION.VALUE.NUMBER_DOT)
+    //             return "0";
+    
+    //             break;
+    //         case "remove-trailing-dot":
+    //             //if the last string in result end with "." and the next input is followed by a symbol. Remove the dot
+    //             //ex calcResultString = "45." actionValue = "+" make-> calcuResultString = "45"
+    //             if(calcResultString.slice(-1) === ACTION.VALUE.NUMBER_DOT && actionName ===  ACTION.TYPE.SYMBOL)
+    //                 return calcResultString.substring(0,calcResultString.length - 1);
+    //             break;
+    //     }
+    //     return calcResultString;
+    // }
 
     const dispatch = useDispatch();
 
@@ -91,6 +116,9 @@ const CalculatorActionButton = ({buttonData}:Props) => {
 
             let resultString = removeLeadingZero(calcResultString);
             resultString = removePreviousResult(calcResetDisplayResultOnNextNumberClick,resultString);
+            // resultString = reformatResultWithDecimal("add-leading-zero",calcResultString,actionValue,actionName);
+
+            if(hasDecimalAlreadyChecker(resultString,actionValue)) return undefined;
 
             if(calcResetDisplayFormulaOnNextNumberClick)
                 dispatch(resetResultAndFormula());
@@ -98,9 +126,8 @@ const CalculatorActionButton = ({buttonData}:Props) => {
             dispatch(inputNumberToCalcResult(resultString,actionValue));
 
         }else if(actionName === ACTION.TYPE.SYMBOL){
-
+            // let resultString = reformatResultWithDecimal("remove-trailing-dot",calcResultString,actionValue,actionName);
             dispatch(updateFormulaAndChangeResult(calcResultString,calcDisplayFormula,actionValue));
-
         }
     }
 

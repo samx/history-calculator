@@ -27,6 +27,7 @@ const calculate = (calcDisplayFormula,calcResultString,actionValue) =>{
         forumla.push(Number(calcResultString),actionValue)
 
         return {
+            calcDisplayResultString:String(calcResultString),
             calcDisplayFormula:forumla,
             calcResetDisplayResultOnNextNumberClick:true
         }

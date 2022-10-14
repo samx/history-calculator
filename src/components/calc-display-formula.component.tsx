@@ -1,5 +1,7 @@
 import styled from "styled-components";
-
+import { useSelector } from 'react-redux';
+import { selectCalcDisplayFormula,selectCalcResultString } from "../store/calc/calculations.selector";
+import { useEffect } from "react";
 const Content = styled.div `
 width: 728px;
 height: 47px;
@@ -28,8 +30,11 @@ flex-grow: 0;
 `
 
 const CalculatorDisplayFormula = ({}) => {
+
+    const calcFormula = useSelector(selectCalcDisplayFormula);
+
     return (
-        <Content>6,291 / 8</Content>  
+        <Content>{calcFormula.join(" ")}</Content>  
     );
   };
   

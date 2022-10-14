@@ -1,7 +1,15 @@
 import styled from "styled-components";
 import { ACTION } from "../Constants";
-import { inputNumberToCalcResult } from "../store/calc/calculations.action";
-import { selectCalcResultString } from "../store/calc/calculations.selector";
+import { 
+    inputNumberToCalcResult,
+     updateFormulaAndChangeResult,
+    resetResultAndFormula } from "../store/calc/calculations.action";
+import { 
+    selectCalcResultString, 
+    selectCalcDisplayFormula,
+    selectCalcResetDisplayResultOnNextNumberClick,
+    selectCalcResetDisplayFormulaOnNextNumberClick } from "../store/calc/calculations.selector";
+
 import { useSelector,useDispatch } from 'react-redux';
 
 const Button = styled.button<{buttonColor:string}> `
@@ -57,14 +65,42 @@ const ButtonColorKeys:ButtonColor = { //step 3
 
 
 const CalculatorActionButton = ({buttonData}:Props) => {
-    const currentCalcResultString = useSelector(selectCalcResultString);
+    const calcResultString = useSelector(selectCalcResultString);
+    const calcDisplayFormula = useSelector(selectCalcDisplayFormula);
+    const calcResetDisplayResultOnNextNumberClick = useSelector(selectCalcResetDisplayResultOnNextNumberClick)
+    const calcResetDisplayFormulaOnNextNumberClick = useSelector(selectCalcResetDisplayFormulaOnNextNumberClick);
+
+    const removeLeadingZero = (calcResultString:string):string=>{
+        if(calcResultString.substring(0,1) === "0")
+            return "";
+        else
+            return calcResultString;
+    }
+
+    const removePreviousResult = (calcResetDisplayResultOnNextNumberClick:boolean,calcResultString:string):string => {
+        if(calcResetDisplayResultOnNextNumberClick)
+            return "";
+        else
+            return calcResultString;               
+    }
+
     const dispatch = useDispatch();
+
     function addInputToCalc(actionName:string, actionValue:string):void{
         if(actionName === ACTION.TYPE.NUMBER){
-            console.log(ACTION.TYPE.NUMBER)
-            dispatch(inputNumberToCalcResult(currentCalcResultString,actionValue))
+
+            let resultString = removeLeadingZero(calcResultString);
+            resultString = removePreviousResult(calcResetDisplayResultOnNextNumberClick,resultString);
+
+            if(calcResetDisplayFormulaOnNextNumberClick)
+                dispatch(resetResultAndFormula());
+            
+            dispatch(inputNumberToCalcResult(resultString,actionValue));
+
         }else if(actionName === ACTION.TYPE.SYMBOL){
-    
+
+            dispatch(updateFormulaAndChangeResult(calcResultString,calcDisplayFormula,actionValue));
+
         }
     }
 

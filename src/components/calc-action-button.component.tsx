@@ -89,7 +89,7 @@ const CalculatorActionButton = ({buttonData}:Props) => {
         if(calcResultString.indexOf(ACTION.VALUE.NUMBER_DOT) > -1 && actionValue === ACTION.VALUE.NUMBER_DOT )
             return true;
 
-       return false;
+        return false;
     }
 
     // const reformatResultWithDecimal = (caseCheck:string,calcResultString:string , actionValue:string,actionName:string):string =>{        
@@ -109,6 +109,16 @@ const CalculatorActionButton = ({buttonData}:Props) => {
     //     return calcResultString;
     // }
 
+    const noActionNeedCheck = (calcResultString:string,actionValue:string):boolean =>{
+        switch (actionValue) {
+            case ACTION.VALUE.SYMBOL_BACKSPACE:
+                if(calcResultString.length === 0 || calcResultString === "0")
+                    return true;
+                break;            
+        }
+        return false;
+    }
+
     const dispatch = useDispatch();
 
     function addInputToCalc(actionName:string, actionValue:string):void{
@@ -116,6 +126,7 @@ const CalculatorActionButton = ({buttonData}:Props) => {
 
             let resultString = removeLeadingZero(calcResultString);
             resultString = removePreviousResult(calcResetDisplayResultOnNextNumberClick,resultString);
+
             // resultString = reformatResultWithDecimal("add-leading-zero",calcResultString,actionValue,actionName);
 
             if(hasDecimalAlreadyChecker(resultString,actionValue)) return undefined;
@@ -127,6 +138,9 @@ const CalculatorActionButton = ({buttonData}:Props) => {
 
         }else if(actionName === ACTION.TYPE.SYMBOL){
             // let resultString = reformatResultWithDecimal("remove-trailing-dot",calcResultString,actionValue,actionName);
+
+            if(noActionNeedCheck(calcResultString,actionValue)) return;
+
             dispatch(updateFormulaAndChangeResult(calcResultString,calcDisplayFormula,actionValue));
         }
     }

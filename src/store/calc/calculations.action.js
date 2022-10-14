@@ -76,8 +76,8 @@ const makeCalculations = (calcResultString,calcDisplayFormula, actionValue) => {
     const equalSymbol = [ACTION.VALUE.SYMBOL_EQUAL];
 
     if(mathSymbols.indexOf(actionValue) !== -1){
-        let payload = calculate(calcDisplayFormula,calcResultString,actionValue)
-        return payload
+        let payload = calculate(calcDisplayFormula,calcResultString,actionValue);
+        return payload;
     }else if(clearSymbols.indexOf(actionValue) !== -1){
 
     }else if(equalSymbol.indexOf(actionValue) !== -1){
@@ -86,9 +86,28 @@ const makeCalculations = (calcResultString,calcDisplayFormula, actionValue) => {
     }
   };
 
-export const updateFormulaAndChangeResult = (calcResultString,calcDisplayFormula, actionValue) => {
-    
-    let payload = makeCalculations(calcResultString,calcDisplayFormula, actionValue)
+  const backspace = (calcResultString) => {
+    let backspaceResult = calcResultString.substring(0,calcResultString.length-1);
+    if(backspaceResult.length === 0){
+        return { calcDisplayResultString: "0" }
+    }else{
+        return { calcDisplayResultString: calcResultString.substring(0,calcResultString.length-1) }
+    }    
+  }
 
-    return createAction(CALC_ACTION_TYPES.SET_CALC_NEW_CALCULATION, payload);
+export const updateFormulaAndChangeResult = (calcResultString,calcDisplayFormula, actionValue) => {
+    let payload;
+
+    switch (actionValue) {
+        case ACTION.VALUE.SYMBOL_BACKSPACE:
+            console.log("backspace")
+            payload = backspace(calcResultString);
+            return createAction(CALC_ACTION_TYPES.SET_CALC_BACKSPACE, payload);
+    
+        default:
+            payload = makeCalculations(calcResultString,calcDisplayFormula, actionValue);
+            return createAction(CALC_ACTION_TYPES.SET_CALC_NEW_CALCULATION, payload);
+    }
+
+    
 };

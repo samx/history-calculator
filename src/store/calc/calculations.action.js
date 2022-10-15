@@ -100,10 +100,24 @@ export const updateFormulaAndChangeResult = (calcResultString,calcDisplayFormula
 
     switch (actionValue) {
         case ACTION.VALUE.SYMBOL_BACKSPACE:
-            console.log("backspace")
             payload = backspace(calcResultString);
             return createAction(CALC_ACTION_TYPES.SET_CALC_BACKSPACE, payload);
-    
+        
+        case ACTION.VALUE.SYMBOL_CLEAR_ALL:
+            return createAction(CALC_ACTION_TYPES.SET_CALC_RESET_FORMULA_AND_RESULTS,{
+                calcDisplayResultString: "0",
+                calcDisplayFormula:[],
+                calcResetDisplayResultOnNextNumberClick:false,
+                calcResetDisplayFormulaOnNextNumberClick:false
+            });
+
+        case ACTION.VALUE.SYMBOL_CLEAR_RESULT:
+            return createAction(CALC_ACTION_TYPES.SET_CALC_RESET_FORMULA_AND_RESULTS,{
+                calcDisplayResultString: "0",
+                calcResetDisplayResultOnNextNumberClick:false,
+                calcResetDisplayFormulaOnNextNumberClick:false
+            });
+
         default:
             payload = makeCalculations(calcResultString,calcDisplayFormula, actionValue);
             return createAction(CALC_ACTION_TYPES.SET_CALC_NEW_CALCULATION, payload);

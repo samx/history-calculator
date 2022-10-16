@@ -78,8 +78,6 @@ const makeCalculations = (calcResultString,calcDisplayFormula, actionValue) => {
     if(mathSymbols.indexOf(actionValue) !== -1){
         let payload = calculate(calcDisplayFormula,calcResultString,actionValue);
         return payload;
-    }else if(clearSymbols.indexOf(actionValue) !== -1){
-
     }else if(equalSymbol.indexOf(actionValue) !== -1){
         let payload = calculateAndClearFormulaDisplay(calcDisplayFormula,calcResultString,actionValue)
         return payload
@@ -99,6 +97,7 @@ export const updateFormulaAndChangeResult = (calcResultString,calcDisplayFormula
     let payload;
 
     switch (actionValue) {
+
         case ACTION.VALUE.SYMBOL_BACKSPACE:
             payload = backspace(calcResultString);
             return createAction(CALC_ACTION_TYPES.SET_CALC_BACKSPACE, payload);
@@ -121,7 +120,5 @@ export const updateFormulaAndChangeResult = (calcResultString,calcDisplayFormula
         default:
             payload = makeCalculations(calcResultString,calcDisplayFormula, actionValue);
             return createAction(CALC_ACTION_TYPES.SET_CALC_NEW_CALCULATION, payload);
-    }
-
-    
+    }  
 };

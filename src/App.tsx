@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {Background} from './components/styles/Background.styled'
 import Calculator from './components/Calculator'
 import CalculatorHistoryResultAndFormula from "./components/history-list.component";
+import AppInfo from './components/AppInfo';
 
  const Container = styled.div `
   position: relative;
@@ -17,7 +18,8 @@ import CalculatorHistoryResultAndFormula from "./components/history-list.compone
 function App() {
   return (
     <Background>
-      <Container>
+      <AppInfo></AppInfo>
+      <Container>  
         <CalculatorHistoryResultAndFormula />
         <Calculator/>
       </Container>

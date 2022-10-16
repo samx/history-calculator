@@ -3,6 +3,28 @@ export const ACTION = {
         NUMBER:'NUMBER',
         SYMBOL:'SYMBOL'
     },
+    KEY_TO_ID:{
+        '0':'NUMBER_0',
+        '1':"NUMBER_1",
+        '2':"NUMBER_2",
+        '3':"NUMBER_3",
+        '4':"NUMBER_4",
+        '5':"NUMBER_5",
+        '6':"NUMBER_6",
+        '7':"NUMBER_7",
+        '8':"NUMBER_8",
+        '9':"NUMBER_9",
+        '.':"NUMBER_DOT",
+        'Enter':"SYMBOL_EQUAL",
+        '+':"SYMBOL_PLUS",
+        '-':"SYMBOL_MINUS",
+        '/':"SYMBOL_DIVIDE",
+        '*':"SYMBOL_MULTIPLE",
+        //'':"SYMBOL_CLEAR_RESULT",
+        'Escape':"SYMBOL_CLEAR_ALL",
+        //'':"SYMBOL_BLANK",
+        'Backspace':"SYMBOL_BACKSPACE"
+    },
     VALUE:{
         NUMBER_0:'0',
         NUMBER_1:'1',
@@ -24,7 +46,28 @@ export const ACTION = {
         SYMBOL_CLEAR_ALL:'CE',
         SYMBOL_BLANK:'',
         SYMBOL_BACKSPACE:'',
-
+    },
+    ID:{
+        NUMBER_0:'NUMBER_0',
+        NUMBER_1:'NUMBER_1',
+        NUMBER_2:'NUMBER_2',
+        NUMBER_3:'NUMBER_3',
+        NUMBER_4:'NUMBER_4',
+        NUMBER_5:'NUMBER_5',
+        NUMBER_6:'NUMBER_66',
+        NUMBER_7:'NUMBER_7',
+        NUMBER_8:'NUMBER_8',
+        NUMBER_9:'NUMBER_9',
+        NUMBER_DOT:'NUMBER_DOT',
+        SYMBOL_EQUAL:'SYMBOL_EQUAL',
+        SYMBOL_PLUS:'SYMBOL_PLUS',
+        SYMBOL_MINUS:'SYMBOL_MINUS',
+        SYMBOL_DIVIDE:'SYMBOL_DIVIDE',
+        SYMBOL_MULTIPLE:'SYMBOL_MULTIPLE',
+        SYMBOL_CLEAR_RESULT:'SYMBOL_CLEAR_RESULT',
+        SYMBOL_CLEAR_ALL:'SYMBOL_CLEAR_ALL',
+        SYMBOL_BLANK:'SYMBOL_BLANK',
+        SYMBOL_BACKSPACE:'SYMBOL_BACKSPACE',
     }
 }
 

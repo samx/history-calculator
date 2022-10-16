@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {useEffect, useState, KeyboardEvent} from 'react';
 import { ACTION } from "../Constants";
 import { store } from '../store/store';
 import { 
@@ -50,6 +51,7 @@ outline: 2px solid transparent;
 
 type Props = {
     buttonData:{
+        id:string,
         display:string,
         buttonColor:'dark-button-low'| 'dark-button-medium'| 'dark-button-high', //1 step 
         actionName:string,
@@ -125,8 +127,6 @@ const CalculatorActionButton = ({buttonData}:Props) => {
         }
     }
 
-
-
     function addInputToCalc(actionName:string, actionValue:string):void{
         if(actionName === ACTION.TYPE.NUMBER){
 
@@ -155,7 +155,7 @@ const CalculatorActionButton = ({buttonData}:Props) => {
                         ? ButtonColorKeys[buttonData.buttonColor] : "#2E2F38"
 
     return (
-        <Button onClick={()=>addInputToCalc( buttonData.actionName, buttonData.actionValue)} 
+        <Button id={buttonData.id} onClick={()=>addInputToCalc( buttonData.actionName, buttonData.actionValue)} 
         buttonColor={bcolor}>{buttonData.display}</Button>  
     );
   };

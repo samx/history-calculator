@@ -20,7 +20,7 @@ export const ACTION = {
         '-':"SYMBOL_MINUS",
         '/':"SYMBOL_DIVIDE",
         '*':"SYMBOL_MULTIPLE",
-        //'':"SYMBOL_CLEAR_RESULT",
+        'Delete':"SYMBOL_CLEAR_RESULT",
         'Escape':"SYMBOL_CLEAR_ALL",
         //'':"SYMBOL_BLANK",
         'Backspace':"SYMBOL_BACKSPACE"

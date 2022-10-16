@@ -34,15 +34,12 @@ interface NumButton {
 }
 
 const CalculatorRowButtons = ({ buttons }: Props) => {
-    return (
-        <Content>
+    return <Content>
         {buttons.map((button) => (
             <CalculatorActionButton key={button.actionValue}
-            buttonData={button} 
- />
+            buttonData={button} />
         ))}
-        </Content>  
-    );
+        </Content>;
   };
   
 export default CalculatorRowButtons;

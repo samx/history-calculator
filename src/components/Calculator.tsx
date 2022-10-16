@@ -2,6 +2,7 @@ import styled from "styled-components";
 import CalculatorDisplayFormula from './calc-display-formula.component';
 import CalculatorDisplayResult from './calc-display-result.component';
 import CalculatorRowButtons from './calc-row-buttons.component';
+
 import { ACTION } from '../Constants';
 import { useEffect } from "react";
 import { useDispatch } from 'react-redux';
@@ -62,7 +63,7 @@ const Calculator = ({}) => {
                 {display:'CE',buttonColor:'dark-button-medium',actionName:ACTION.TYPE.SYMBOL, actionValue:ACTION.VALUE.SYMBOL_CLEAR_RESULT},
                 {display:'C',buttonColor:'dark-button-medium',actionName:ACTION.TYPE.SYMBOL, actionValue:ACTION.VALUE.SYMBOL_CLEAR_ALL},
                 {display:'',buttonColor:'dark-button-medium',actionName:ACTION.TYPE.SYMBOL, actionValue:ACTION.VALUE.SYMBOL_BLANK},
-                {display:'⌫ ',buttonColor:'dark-button-medium',actionName:ACTION.TYPE.SYMBOL, actionValue:ACTION.VALUE.SYMBOL_BACKSPACE}]}/>
+                {display:'⌫',buttonColor:'dark-button-medium',actionName:ACTION.TYPE.SYMBOL, actionValue:ACTION.VALUE.SYMBOL_BACKSPACE}]}/>
         </Content>  
     );
   };

@@ -1,9 +1,16 @@
 import styled from "styled-components";
 import { ACTION } from "../Constants";
+import { store } from '../store/store';
 import { 
     inputNumberToCalcResult,
      updateFormulaAndChangeResult,
-    resetResultAndFormula } from "../store/calc/calculations.action";
+    resetResultAndFormula 
+} from "../store/calc/calculations.action";
+
+import {
+    addResultAndFormulaToHistoryAction
+} from "../store/history/history.action"
+
 import { 
     selectCalcResultString, 
     selectCalcDisplayFormula,
@@ -65,6 +72,7 @@ const ButtonColorKeys:ButtonColor = { //step 3
 
 
 const CalculatorActionButton = ({buttonData}:Props) => {
+    const dispatch = useDispatch();
     const calcResultString = useSelector(selectCalcResultString);
     const calcDisplayFormula = useSelector(selectCalcDisplayFormula);
     const calcResetDisplayResultOnNextNumberClick = useSelector(selectCalcResetDisplayResultOnNextNumberClick)
@@ -104,7 +112,20 @@ const CalculatorActionButton = ({buttonData}:Props) => {
         return false;
     }
 
-    const dispatch = useDispatch();
+    const addResultAndFormulaToHistoryList = (actionValue:string):void =>{
+        if(actionValue === ACTION.VALUE.SYMBOL_EQUAL){
+            
+            let {calc,history} = store.getState();
+
+            let {calcDisplayFormula, calcDisplayResultString } = calc;
+            let { savedResultAndFormulaList } = history;
+
+            dispatch(addResultAndFormulaToHistoryAction(savedResultAndFormulaList, calcDisplayResultString, calcDisplayFormula))
+
+        }
+    }
+
+
 
     function addInputToCalc(actionName:string, actionValue:string):void{
         if(actionName === ACTION.TYPE.NUMBER){
@@ -124,6 +145,9 @@ const CalculatorActionButton = ({buttonData}:Props) => {
             if(noActionNeededCheck(calcResultString,actionValue)) return;
 
             dispatch(updateFormulaAndChangeResult(calcResultString,calcDisplayFormula,actionValue));
+                                 
+            addResultAndFormulaToHistoryList(actionValue)
+
         }
     }
 

@@ -84,14 +84,15 @@ const makeCalculations = (calcResultString,calcDisplayFormula, actionValue) => {
     }
   };
 
-  const backspace = (calcResultString) => {
+const backspace = (calcResultString) => {
     let backspaceResult = calcResultString.substring(0,calcResultString.length-1);
+    
     if(backspaceResult.length === 0){
         return { calcDisplayResultString: "0" }
     }else{
         return { calcDisplayResultString: calcResultString.substring(0,calcResultString.length-1) }
     }    
-  }
+}
 
 export const updateFormulaAndChangeResult = (calcResultString,calcDisplayFormula, actionValue) => {
     let payload;

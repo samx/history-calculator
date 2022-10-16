@@ -21,11 +21,13 @@ export const calcReducer = (state = CALC_INITIAL_STATE, action = {}) =>{
         case CALC_ACTION_TYPES.SET_CALC_NEW_CALCULATION:
         case CALC_ACTION_TYPES.SET_CALC_RESET_FORMULA_AND_RESULTS:
         case CALC_ACTION_TYPES.SET_CALC_BACKSPACE:
+
             return {
                 ...state,
                 ...payload,
             };
         default:
+
             return state;
     }
 }

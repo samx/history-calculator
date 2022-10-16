@@ -54,7 +54,7 @@ export const ACTION = {
         NUMBER_3:'NUMBER_3',
         NUMBER_4:'NUMBER_4',
         NUMBER_5:'NUMBER_5',
-        NUMBER_6:'NUMBER_66',
+        NUMBER_6:'NUMBER_6',
         NUMBER_7:'NUMBER_7',
         NUMBER_8:'NUMBER_8',
         NUMBER_9:'NUMBER_9',

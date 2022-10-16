@@ -25,6 +25,36 @@ right: 20px;
 bottom: 66px;
 `
 
+const SourceCodeLink = styled.div `
+display: flex;
+-webkit-flex-direction: row;
+-ms-flex-direction: row;
+flex-direction: row;
+-webkit-align-items: flex-start;
+-webkit-box-align: flex-start;
+-ms-flex-align: flex-start;
+align-items: flex-start;
+padding: 0px;
+width: 728px;
+align-items:center;
+justify-content:center;
+text-align:center;
+-webkit-flex: none;
+-ms-flex: none;
+flex: none;
+-webkit-order: 2;
+-ms-flex-order: 2;
+order: 2;
+-ms-flex-item-align: stretch;
+-ms-flex-positive: 0;
+color:white;
+font-size:20px;
+
+a {
+    color:white;   
+}
+`;
+
 const Calculator = ({}) => {
     
     const dispatch = useDispatch();
@@ -73,6 +103,9 @@ const Calculator = ({}) => {
                 {id:ACTION.ID.SYMBOL_CLEAR_ALL, display:'C',buttonColor:'dark-button-medium',actionName:ACTION.TYPE.SYMBOL, actionValue:ACTION.VALUE.SYMBOL_CLEAR_ALL},
                 {id:ACTION.ID.SYMBOL_BLANK, display:'',buttonColor:'dark-button-medium',actionName:ACTION.TYPE.SYMBOL, actionValue:ACTION.VALUE.SYMBOL_BLANK},
                 {id:ACTION.ID.SYMBOL_BACKSPACE, display:'⌫',buttonColor:'dark-button-medium',actionName:ACTION.TYPE.SYMBOL, actionValue:ACTION.VALUE.SYMBOL_BACKSPACE}]}/>
+            <SourceCodeLink>            
+                <a href="https://github.com/samx/history-calculator">Written in React.js/TypeScript [https://github.com/samx/history-calculator]</a>
+            </SourceCodeLink>
         </Content>  
     );
   };

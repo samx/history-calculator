@@ -12,6 +12,30 @@ left: 20px;
 right: 20px;
 top: 0px;
 overflow:auto;
+display:flex;
+flex-direction: column-reverse;
+
+/* width */
+&::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+&::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+&::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+&::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+
 `
 
 const HistoryList = ({}) => {
@@ -20,7 +44,7 @@ const HistoryList = ({}) => {
 
     return <Content>        
         {listOfHistoryResults.map((resultAndFormula:any,index:number) => (
-            <HistoryItem key={index} resultAndFormulaData={resultAndFormula} />
+            <HistoryItem key={'history-item'+index} index={index} resultAndFormulaData={resultAndFormula} />
         ))}</Content>
     
 }

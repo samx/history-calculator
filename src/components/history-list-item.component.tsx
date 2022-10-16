@@ -25,7 +25,7 @@ position:relative;
 .delete-item{
     position:absolute;
     left:10px;
-    top:10px;
+    top:5px;
     display:none;
     cursor:pointer;
 }

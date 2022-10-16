@@ -4,13 +4,13 @@ import { useSelector,useDispatch } from 'react-redux';
 import { selectListOfHistoryResults } from "../store/history/history.selector";
 
 const Content = styled.div `
-background-color:blue;
+background-color:#454547;
 position: darkgray;
 padding:5px 20px;
 height: 40px;
 font-size:24px;
 color:white;
-border-bottom:1px solid white;
+border-bottom:1px solid #707070;
 text-align:right;
 align-items:center;
 justify-content:right;

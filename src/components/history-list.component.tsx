@@ -4,7 +4,7 @@ import { selectListOfHistoryResults } from "../store/history/history.selector";
 import HistoryItem from "./history-list-item.component";
 
 const Content = styled.div `
-background-color:gray;
+background-color:#363636;
 
 position: absolute;
 height: 350px;

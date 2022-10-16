@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import CalculatorActionButton from './calc-action-button.component';
+import CalculatorButton from './calc-button.component';
 
 const Content = styled.div `
 /* Row */
@@ -37,7 +37,7 @@ const CalculatorRowButtons = ({ buttons }: Props) => {
     return <Content>
 
         {buttons.map((button) => (
-            <CalculatorActionButton key={button.actionValue}
+            <CalculatorButton key={button.actionValue}
             buttonData={button} />
         ))}
         </Content>;

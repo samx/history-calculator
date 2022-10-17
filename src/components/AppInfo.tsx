@@ -39,7 +39,7 @@ const AppInfo = () => {
             <hr/>
 
             <b>Design:</b>
-            <div>Made by4 Gabriele in Figma</div>
+            <div>Made by Gabriele in Figma</div>
             
             <div>
                 <a href="https://www.figma.com/community/file/1041082497681424521">figma.com/community/file/ 1041082497681424521</a>

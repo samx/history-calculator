@@ -10,14 +10,6 @@ const Content = styled.div `
     color:black;
     padding:25px;
 `
-type Props = {
-    resultAndFormulaData:{
-        result:string,
-        formula:[],
-    },
-    index:number
-}
-
 const AppInfo = () => {    
 
     return <Content>                      

@@ -6,7 +6,7 @@
 
 Standard calculator app with calculations saved to a history list using localstorage. Includes keyboard shortcuts.
 
-How the app with built
+App built with:
 * React v18.2.0 (functional components with hooks)
 * TypeScript
 - Redux (with Redux persist to save state history in localstorage)
